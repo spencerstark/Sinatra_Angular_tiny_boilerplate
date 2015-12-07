@@ -21,3 +21,20 @@ indexApp.directive('myFirstDirective', function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 	};
 });
+
+indexApp.directive('logOnBlur', function(){
+	return function (scope, element){
+		element.bind("blur", function () {
+			console.log("The contents have changed for element named" + this.name);
+		})
+	}
+});
+
+
+indexApp.directive('strikeThroughOnClick', function(){
+	return function (scope, element, attribute){
+		element.bind("click", function (){
+			element.toggleClass('stricken');
+		})
+	}
+})

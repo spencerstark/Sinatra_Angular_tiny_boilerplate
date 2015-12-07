@@ -1,1 +1,8 @@
-index.css
+.stricken{
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+body{
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+}
