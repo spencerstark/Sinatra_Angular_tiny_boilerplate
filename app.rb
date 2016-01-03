@@ -15,8 +15,24 @@ require 'socket'
 
 get '/index' do  #<--- This is a route. A route makes it easy to redirect users to content based on what url they pick. You can also have variables in routes.
 	puts request.ip.to_s
-	erb :index   #<--- This is a block of code in the route. In this case we are sending the person who accessed the URL www.somepage.com/index to the index.erb file. 
+	erb :index_app   #<--- This is a block of code in the route. In this case we are sending the person who accessed the URL www.somepage.com/index to the index.erb file. 
 
+end
+
+get '/so_project_1' do  #<--- This is a route. A route makes it easy to redirect users to content based on what url they pick. You can also have variables in routes.
+	puts request.ip.to_s
+	erb :so_project_1   #<--- This is a block of code in the route. In this case we are sending the person who accessed the URL www.somepage.com/index to the index.erb file. 
+
+end
+
+get '/drag_and_drop' do
+	puts request.ip.to_s
+	erb :drag_and_drop
+end
+
+get '/drag2' do
+	puts request.ip.to_s
+	erb :drag2
 end
 
 not_found do  #<--- if somone access's a route that doesn't exist (error 404), then the following code will be executed

@@ -1,0 +1,55 @@
+<head ng-app="demo">
+    <script src="drag/types.js"></script>
+    <script src="shared/angular-drag-and-drop-list.min.js"></script>
+    <link rel="stylesheet" href="drag/types.css">
+    <link rel="stylesheet" href="shared/framework/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="shared/framework/vendor/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="shared/framework/vendor/prism.css">
+    <link rel="stylesheet" href="shared/framework/demo-framework.css">
+    <script src="shared/framework/vendor/prism.js"></script>
+    <script src="shared/framework/demo-framework.js"></script>
+    <script src="shared/framework/view-source.js"></script>
+</head>
+
+<h1>Demo: Item Types</h1>
+
+<div class="alert alert-success">
+    <strong>Instructions:</strong>
+    Drag &amp; drop the names to move them around. Note that the names can not be
+    dropped in the list for the wrong gender. This is achieved with the dnd-type and
+    dnd-allowed-types attributes.
+    This demo also shows the use of the dnd-disable-if attribute, which is used here
+    to limit the number of names per list, as well as fix Alex' position.
+    You can combine these functions with <a href="#/nested">nested lists</a>
+    to build very powerful UIs.
+</div>
+<body>
+    <div class="typesDemo row" ng-controller="TypesDemoController">
+
+        <div ng-repeat="list in lists" class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List of {{list.label}} (max. {{list.max}})</h3>
+                </div>
+                <div class="panel-body" ng-include="'drag/types.html'"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-8" view-source="types"></div>
+        
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List Models</h3>
+                </div>
+                <div class="panel-body">
+                    <pre class="code">{{modelAsJson}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

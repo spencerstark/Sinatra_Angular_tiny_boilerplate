@@ -1,0 +1,74 @@
+<!-- so_project_1.erb -->
+<!-- http://stackoverflow.com/questions/34169378/directive-not-working-angular-js -->
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="so_project_1/so_project_1.js"></script>
+
+	</script>
+	<!-- <link rel="stylesheet" href="index_app/index.css"> -->
+</head>
+<body ng-app="searchApp">
+	<div class="container" ng-controller="SearchController">
+	    <h1>SEARCH</h1>
+
+	    <div class="col-md-12 column">
+	        <div class="panel panel-default">
+	            <!-- Default panel contents -->
+	            <search-template class="panel-body">
+
+	            </search-template>
+	        </div>
+	    </div>
+
+	    <div class="col-md-2">
+	        <div class="input-group" >
+	            <div class="input-group-addon">
+	                <table>
+	                    <tr ng-repeat="recordContent in record | unique:'country'">
+	                        <td>
+	                            <input type="checkbox" ng-model="usedCountry[$index]" aria-label="">
+	                            {{recordContent.country}}
+	                        </td>
+	                    </tr>
+	                </table>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-md-10 column">
+	        <div>
+	            <table class="table">
+	                <tr>
+	                    <th>#</th>
+	                    <th>NAME</th>
+	                    <th>CITY</th>
+	                    <th>COUNTRY</th>
+	                </tr>
+	                <tr ng-repeat="personRecord in record | filter:searchInput">
+	                    <td>{{$index + 1}}</td>
+	                    <td ng-bind-html="personRecord.name | highlight:searchInput" >{{personRecord.name}}</td>
+	                    <td ng-bind-html="personRecord.city | highlight:searchInput">{{personRecord.city}}</td>
+	                    <td ng-bind-html="personRecord.country | highlight:searchInput">{{personRecord.country}}</td>
+	                </tr>
+	            </table>
+	        </div>
+	        <button class="btn btn-default" ng-click="ShowHide()">Add Record</button>
+	        <div ng-show="IsVisible">
+	            <div class="panel panel-default">
+	                <div class="panel-body">
+	                    <form name="addRecordForm" class="navbar-form navbar-left" ng-submit="AddRow()">
+	                        <table class="table">
+	                            <tr>
+	                                <td>#</td>
+	                                <td><input type="text" name="name" placeholder="Name" class="form-control" ng-model="name"></td>
+	                                <td><input type="text" name="city" placeholder="City" class="form-control" ng-model="city"></td>
+	                                <td><input type="text" name="country" placeholder="Country" class="form-control" ng-model="country"></td>
+	                                <td><button type="submit" class="btn btn-default">Submit</button></td>
+	                            </tr>
+	                        </table>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
